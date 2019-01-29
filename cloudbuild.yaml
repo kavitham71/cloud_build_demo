@@ -2,5 +2,5 @@ steps:
 - name: 'ubuntu'
   args: ['sleep', '60']
   timeout: 500s
-- name: 'alpline'
+- name: 'alpine'
   args: ['echo', 'hello world, after 600s']
