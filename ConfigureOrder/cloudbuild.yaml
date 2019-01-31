@@ -1,19 +1,23 @@
 steps:
-- name: 'gcr.io/cloud-builders/go'
-  args: ['generate']
-- name: 'gcr.io/cloud-builders/go'
-  args: ['test', './...']
-- name: 'gcr.io/cloud-builders/go'
-  args: ['install', 'mytarget']
-  id: 'go-install'
+ - name: 'gcr.io/cloud-builders/javac'
+   args: ['Helloworld.java']
+   id: 'A'
+ - name: 'ubuntu'
+   args: ['echo', '${_VARIABLE1} ${_VARIABLE2}']
+   id: 'B'
+   waitFor: ['-'] 
+ - name: 'ubuntu'
+   args: ['echo', 'hello $_AB']
+   id: 'C'
+   waitFor: ['B'] 
+substitutions:
+  _VARIABLE1: welcome
+  _VARIABLE2: Kavitha
+artifacts:
+  objects:
+    location: 'gs://artifact_bucket/'
+    paths: ['HelloWorld.class']
+    waitFor: ['A','B','C'] 
+options:
+    substitution_option: 'ALLOW_LOOSE'
 
-- name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '-r', './somefiles', 'gs://artifact_bucket]
-  waitFor: ['-']  # The '-' indicates that this step begins immediately.
-  id: 'fetch-resources'
-
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/mytarget', '.']
-  waitFor: ['go-install', 'fetch-resources']
-
-images: ['gcr.io/$PROJECT_ID/mytarget']
