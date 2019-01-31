@@ -16,8 +16,8 @@ substitutions:
 artifacts:
   objects:
     location: 'gs://artifact_bucket/'
-    paths: ['HelloWorld.class']
-    waitFor: ['A','B','C'] 
+    paths: ['HelloWorld.class'] 
+  waitFor: ['A','B','C']
 options:
     substitution_option: 'ALLOW_LOOSE'
 
