@@ -3,6 +3,6 @@ steps:
   args: ['HelloWorld.java']
 artifacts:
   objects:
-    location: 'gs://[STORAGE_LOCATION]/'
+    location: 'gs://artifact_bucket/'
     paths: ['HelloWorld.class']
 
