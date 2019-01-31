@@ -1,6 +1,6 @@
 steps:
- - name: 'gcr.io/cloud-builders/javac'
-   args: ['Helloworld.java']
+ - name: 'ubuntu:xenial'
+   args: ['echo', '${_VARIABLE1} to this']
    id: 'A'
  - name: 'ubuntu'
    args: ['echo', '${_VARIABLE1} ${_VARIABLE2}']
