@@ -9,14 +9,10 @@ steps:
  - name: 'ubuntu'
    args: ['echo', 'hello $_AB']
    id: 'C'
-   waitFor: ['B'] 
+   waitFor: ['A','B'] 
 substitutions:
   _VARIABLE1: welcome
   _VARIABLE2: Kavitha
-artifacts:
-  objects:
-    location: 'gs://artifact_bucket/'
-    paths: ['HelloWorld.class'] 
 options:
     substitution_option: 'ALLOW_LOOSE'
 
