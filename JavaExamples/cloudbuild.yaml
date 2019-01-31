@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/javac'
-  args: ['HelloWorld.java']
+  args: ['Helloworld.java']
   dir: 'JavaExamples'
 artifacts:
   objects:
