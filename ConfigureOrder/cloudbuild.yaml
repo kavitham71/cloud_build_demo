@@ -8,7 +8,7 @@ steps:
   id: 'go-install'
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '-r', './somefiles', 'gs://my-resource-bucket/somefiles']
+  args: ['cp', '-r', './somefiles', 'gs://artifact_bucket]
   waitFor: ['-']  # The '-' indicates that this step begins immediately.
   id: 'fetch-resources'
 
