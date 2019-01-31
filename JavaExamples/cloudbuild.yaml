@@ -1,8 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/javac'
-  args: ['HelloWorld.java']
+  args: ['HelloWorld.java','.']
+  dir: 'JavaExamples'
 artifacts:
   objects:
-    location: 'gs://[STORAGE_LOCATION]/'
+    location: 'gs://artifact_bucket/'
     paths: ['HelloWorld.class']
 
